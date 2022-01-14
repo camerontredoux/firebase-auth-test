@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useAuth } from "../utils/auth";
+// import { useAuth } from "../utils/auth";
 
 export default function Home() {
   // const auth = useAuth();
