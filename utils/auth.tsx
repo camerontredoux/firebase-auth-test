@@ -9,6 +9,8 @@ import {
   User,
 } from "firebase/auth";
 import { initializeApp, getApps, getApp, FirebaseApp } from "firebase/app";
+import { createUser } from "./createUser";
+import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_API_KEY,
@@ -16,12 +18,14 @@ const firebaseConfig = {
   projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
 };
 
-const app: FirebaseApp =
+export const app: FirebaseApp =
   getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
 
+export const db = getFirestore(app);
+
 interface AuthType {
-  user: User | null;
-  signinWithGitHub: () => Promise<User>;
+  user: UserType | null;
+  signinWithGitHub: () => Promise<UserType | null>;
   signout: () => Promise<void>;
 }
 
@@ -36,32 +40,54 @@ export const useAuth = () => {
   return useContext(AuthContext);
 };
 
+export interface UserType {
+  uid: string;
+  displayName: string;
+  email: string;
+  photoURL: string;
+  providerId: string;
+}
+
 const useProvideAuth = () => {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<UserType | null>(null);
+
+  const handleUser = (user: User | null) => {
+    if (user) {
+      const userData: UserType = {
+        uid: user.uid,
+        displayName: user.displayName!,
+        email: user.email!,
+        photoURL: user.photoURL!,
+        providerId: user.providerData[0].providerId,
+      };
+
+      createUser(userData.uid, userData);
+      setUser(userData);
+      return userData;
+    } else {
+      setUser(null);
+      return null;
+    }
+  };
 
   const auth = getAuth(app);
   const provider = new GithubAuthProvider();
 
   const signinWithGitHub = async () => {
     return await signInWithPopup(auth, provider).then((result) => {
-      setUser(result.user);
-      return result.user;
+      return handleUser(result.user);
     });
   };
 
   const signout = async () => {
     return await signOut(auth).then(() => {
-      setUser(null);
+      handleUser(null);
     });
   };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUser(user);
-      } else {
-        setUser(null);
-      }
+      handleUser(user);
     });
 
     return () => unsubscribe();
