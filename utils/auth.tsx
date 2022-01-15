@@ -107,7 +107,7 @@ const useProvideAuth = () => {
       .then((result) => {
         return handleUser(result.user);
       })
-      .catch(async (err) => {
+      .catch(async () => {
         await linkWithRedirect(auth.currentUser!, githubProvider);
         const result = await getRedirectResult(auth);
 
