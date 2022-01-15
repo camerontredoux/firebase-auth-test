@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.signout:hover span {
+  @apply sm:hidden;
+}
+
+.signout:hover:before {
+  @apply sm:content-['Signout?'];
+}
