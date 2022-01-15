@@ -1,16 +1,22 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import { FirebaseApp, getApp, getApps, initializeApp } from "firebase/app";
 import "firebase/auth";
 import {
   getAuth,
+  getRedirectResult,
   GithubAuthProvider,
+  GoogleAuthProvider,
+  linkWithPopup,
   onAuthStateChanged,
   signInWithPopup,
+  signInWithRedirect,
   signOut,
   User,
+  unlink,
+  linkWithRedirect,
 } from "firebase/auth";
-import { initializeApp, getApps, getApp, FirebaseApp } from "firebase/app";
-import { createUser } from "./createUser";
 import { getFirestore } from "firebase/firestore";
+import React, { createContext, useContext, useEffect, useState } from "react";
+import { createUser } from "./createUser";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_API_KEY,
@@ -26,6 +32,9 @@ export const db = getFirestore(app);
 interface AuthType {
   user: UserType | null;
   signinWithGitHub: () => Promise<UserType | null>;
+  signinWithGoogle: () => Promise<UserType | null>;
+  linkAccounts: () => Promise<any>;
+  unlinkAccount: () => Promise<any>;
   signout: () => Promise<void>;
 }
 
@@ -45,7 +54,7 @@ export interface UserType {
   displayName: string;
   email: string;
   photoURL: string;
-  providerId: string;
+  providerData: string[];
 }
 
 const useProvideAuth = () => {
@@ -58,7 +67,7 @@ const useProvideAuth = () => {
         displayName: user.displayName!,
         email: user.email!,
         photoURL: user.photoURL!,
-        providerId: user.providerData[0].providerId,
+        providerData: user.providerData.map((provider) => provider.providerId),
       };
 
       createUser(userData.uid, userData);
@@ -71,12 +80,47 @@ const useProvideAuth = () => {
   };
 
   const auth = getAuth(app);
-  const provider = new GithubAuthProvider();
+  const githubProvider = new GithubAuthProvider();
+  const googleProvider = new GoogleAuthProvider();
 
   const signinWithGitHub = async () => {
-    return await signInWithPopup(auth, provider).then((result) => {
+    return await signInWithPopup(auth, githubProvider)
+      .then((result) => {
+        return handleUser(result.user);
+      })
+      .catch(async () => {
+        await signInWithRedirect(auth, googleProvider);
+        const result = await getRedirectResult(auth);
+
+        return handleUser(result?.user!);
+      });
+  };
+
+  const signinWithGoogle = async () => {
+    return await signInWithPopup(auth, googleProvider).then((result) => {
       return handleUser(result.user);
     });
+  };
+
+  const linkAccounts = async () => {
+    return await linkWithPopup(auth.currentUser!, githubProvider)
+      .then((result) => {
+        return handleUser(result.user);
+      })
+      .catch(async (err) => {
+        await linkWithRedirect(auth.currentUser!, githubProvider);
+        const result = await getRedirectResult(auth);
+
+        return handleUser(result?.user!);
+      });
+  };
+
+  const unlinkAccount = async () => {
+    return await unlink(auth.currentUser!, githubProvider.providerId).then(
+      (result) => {
+        handleUser(result);
+      }
+    );
   };
 
   const signout = async () => {
@@ -96,6 +140,9 @@ const useProvideAuth = () => {
   return {
     user,
     signinWithGitHub,
+    signinWithGoogle,
+    linkAccounts,
+    unlinkAccount,
     signout,
   };
 };
