@@ -46,10 +46,7 @@ const Button = (props: ButtonProps) => {
     <button
       onClick={props.handleClick}
       type="button"
-      className={[
-        `shadow-sm border-2 btn-${props.variant}`,
-        props.className,
-      ].join(" ")}
+      className={[`shadow-sm btn-${props.variant}`, props.className].join(" ")}
     >
       {props.icon ? iconSvg : null}
       <span>{props.text}</span>

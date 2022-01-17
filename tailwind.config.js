@@ -5,7 +5,7 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      body: ["Inter"],
+      'body': '"Work Sans"',
     },
     extend: {},
   },

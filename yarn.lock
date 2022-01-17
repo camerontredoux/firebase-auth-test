@@ -403,6 +403,11 @@
   resolved "https://registry.yarnpkg.com/@firebase/webchannel-wrapper/-/webchannel-wrapper-0.6.1.tgz#0c74724ba6e9ea6ad25a391eab60a79eaba4c556"
   integrity sha512-9FqhNjKQWpQ3fGnSOCovHOm+yhhiorKEqYLAfd525jWavunDJcx8rOW6i6ozAh+FbwcYMkL7b+3j4UR/30MpoQ==
 
+"@fontsource/ibm-plex-sans@^4.5.1":
+  version "4.5.1"
+  resolved "https://registry.yarnpkg.com/@fontsource/ibm-plex-sans/-/ibm-plex-sans-4.5.1.tgz#0aff4e48f470c1647c180255495d91a28b0a50e6"
+  integrity sha512-Jz+Jgjhrzv21MrsJbUV2sewRrCsKv51NuQFje1QWQbn2E4L1G58pxb6+H9N6EdELlvZvwBffvTYS4OWrF4r71A==
+
 "@grpc/grpc-js@^1.3.2":
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/@grpc/grpc-js/-/grpc-js-1.5.0.tgz#fa0ca3170d7544aa89db6f64f7b4778603d0a786"

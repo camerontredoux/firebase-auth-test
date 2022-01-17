@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  background-color: ;
+}
+
 .signout:hover span {
   @apply sm:hidden;
 }
