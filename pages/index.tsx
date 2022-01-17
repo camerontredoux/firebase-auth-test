@@ -34,9 +34,9 @@ export default function Home() {
   const auth = useAuth();
 
   return (
-    <div className="font-body flex flex-col gap-5 items-center justify-center min-h-screen py-2 bg-gray-300">
+    <div className="font-body flex flex-col gap-5 items-center justify-center py-10">
       <Head>
-        <title>Create Next App</title>
+        <title>Cameron Tredoux's Portfolio</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

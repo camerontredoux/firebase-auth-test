@@ -1,9 +1,9 @@
 import Document, {
-  Html,
+  DocumentContext,
   Head,
+  Html,
   Main,
   NextScript,
-  DocumentContext,
 } from "next/document";
 
 class MyDocument extends Document {
@@ -21,7 +21,7 @@ class MyDocument extends Document {
             rel="stylesheet"
           ></link>
         </Head>
-        <body className="font-body bg-[#fcfcfc] px-10">
+        <body className="font-body bg-[#fcfcfc] px-10 max-w-screen-xl mx-auto ">
           <Main />
           <NextScript />
         </body>
