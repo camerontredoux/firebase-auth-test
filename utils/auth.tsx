@@ -29,7 +29,7 @@ export const app: FirebaseApp =
 
 export const db = getFirestore(app);
 
-interface AuthType {
+export interface AuthType {
   user: UserType | null;
   signinWithGitHub: () => Promise<UserType | null>;
   signinWithGoogle: () => Promise<UserType | null>;

@@ -4,7 +4,7 @@ import Head from "next/head";
 const Dashboard = () => {
   const auth = useAuth();
   return (
-    <div className="py-10 flex flex-col items-center">
+    <div className="flex flex-col items-center">
       <Head>
         <title>Dashboard</title>
         <link rel="icon" href="/favicon.ico" />
