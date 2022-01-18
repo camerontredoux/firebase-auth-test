@@ -39,12 +39,12 @@ const Navigation = () => {
             </Link>
           </li>
           {auth?.user ? (
-            <li>
+            <li ref={ref}>
               <a href="#" onClick={() => setOpen((open) => !open)}>
                 <Avatar />
               </a>
               {open && (
-                <div ref={ref} className="flex justify-center items-center">
+                <div className="flex justify-center items-center">
                   <Dropdown setOpen={setOpen} />
                 </div>
               )}

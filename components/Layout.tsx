@@ -3,10 +3,10 @@ import Navigation from "./Navigation";
 
 const Layout: React.FC = ({ children }) => {
   return (
-    <div className="flex flex-col justify-between min-h-screen">
+    <div className="flex flex-col min-h-screen">
       <Navigation />
       {children}
-      <footer className="mt-10 border-t h-24 flex items-center justify-between">
+      <footer className="mt-10 mb-5 h-12 flex items-center justify-between">
         <div>cameron tredoux</div>
         <div className="transition-all ease-in duration-200 opacity-0 sm:opacity-100">
           my portfolio :)
