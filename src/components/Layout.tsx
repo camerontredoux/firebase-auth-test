@@ -13,7 +13,11 @@ const Layout: React.FC = ({ children }) => {
         </div>
         <ul className="flex items-center gap-4 justify-center">
           <li>
-            <a href="https://www.github.com/camerontredoux" target="_blank">
+            <a
+              rel="noreferrer"
+              href="https://www.github.com/camerontredoux"
+              target="_blank"
+            >
               <svg
                 className="h-4 w-4 fill-zinc-300"
                 role="img"
@@ -27,6 +31,7 @@ const Layout: React.FC = ({ children }) => {
           </li>
           <li>
             <a
+              rel="noreferrer"
               href="https://www.linkedin.com/in/camerontredoux"
               target="_blank"
             >

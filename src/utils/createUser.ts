@@ -12,3 +12,14 @@ export const createUser = async (uid: string, data: UserType) => {
     { merge: true }
   );
 };
+
+export const createUserTRPC = async (uid: string, name: string) => {
+  return await setDoc(
+    doc(db, "usersTRPC", uid),
+    {
+      name,
+      time: Timestamp.now(),
+    },
+    { merge: true }
+  );
+};

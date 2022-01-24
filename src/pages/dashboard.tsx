@@ -1,12 +1,20 @@
-import { useAuth } from "@utils/auth";
+import { db, useAuth } from "@/utils/auth";
 import Head from "next/head";
-import { LinkGithub } from "pages";
 import Image from "next/image";
+import { collection, getDocs } from "firebase/firestore";
+import { LinkGithub } from ".";
+
+const queryPosts = async () => {
+  const query = await getDocs(collection(db, "posts"));
+  query.forEach((q) => {
+    console.log(q.data());
+  });
+};
 
 const Dashboard = () => {
   const auth = useAuth();
   return (
-    <div className="flex flex-col flex-1 gap-5 justify-center items-center py-10">
+    <div className="flex flex-col flex-1 gap-5 justify-start items-center py-10">
       <Head>
         <title>Dashboard</title>
         <link rel="icon" href="/favicon.ico" />

@@ -1,6 +1,9 @@
 import Head from "next/head";
-import { useAuth } from "@utils/auth";
-import Button from "@components/Button";
+import { useAuth } from "@/utils/auth";
+import Button from "@/components/Button";
+import { trpc } from "@/utils/trpc";
+import Link from "next/link";
+import { useEffect } from "react";
 
 export const LinkGithub = () => {
   const auth = useAuth();
@@ -31,15 +34,32 @@ export const LinkGithub = () => {
 
 export default function Home() {
   const auth = useAuth();
+  const createUserMutation = trpc.useMutation("createUser");
 
   return (
     <div className="flex-1 flex flex-col gap-5 items-center justify-center py-10">
       <Head>
         <title>Cameron Tredoux's Portfolio</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta
+          name="description"
+          content="Cameron Tredoux's Portfolio for Software Engineering."
+        />
       </Head>
 
       <div className="flex flex-col gap-2">
+        <Link href="/sitemap">
+          <a>Sitemap</a>
+        </Link>
+        <Button
+          className={"signout w-52 justify-center"}
+          variant="github"
+          text="Create user"
+          handleClick={() =>
+            createUserMutation.mutate({ id: "2", username: "Conmeron" })
+          }
+        />
         {auth?.user ? (
           <Button
             className={"signout w-52 justify-center"}

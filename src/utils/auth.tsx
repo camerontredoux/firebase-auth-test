@@ -38,7 +38,7 @@ export interface AuthType {
   signout: () => Promise<void>;
 }
 
-const AuthContext = createContext<AuthType | null>(null);
+const AuthContext = createContext<AuthType>({} as AuthType);
 
 export const AuthProvider: React.FC = ({ children }) => {
   const auth = useProvideAuth();

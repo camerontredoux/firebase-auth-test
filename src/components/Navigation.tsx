@@ -1,4 +1,4 @@
-import { useAuth } from "@utils/auth";
+import { useAuth } from "@/utils/auth";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import Avatar from "./Avatar";
@@ -36,6 +36,11 @@ const Navigation = () => {
           <li>
             <Link href="/dashboard">
               <a>dashboard</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/sitemap">
+              <a>sitemap</a>
             </Link>
           </li>
           {auth?.user ? (
