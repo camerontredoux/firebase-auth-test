@@ -1,7 +1,7 @@
 import { db, useAuth } from "@/utils/auth";
+import { collection, getDocs } from "firebase/firestore";
 import Head from "next/head";
 import Image from "next/image";
-import { collection, getDocs } from "firebase/firestore";
 import { LinkGithub } from ".";
 
 const queryPosts = async () => {

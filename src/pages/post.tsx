@@ -1,4 +1,3 @@
-import { trpc } from "@/utils/trpc";
 import React from "react";
 import { useForm } from "react-hook-form";
 
@@ -10,7 +9,6 @@ const Sites: React.FC<SitesProps> = () => {
     register,
     formState: { errors },
   } = useForm();
-  const postMutate = trpc.useMutation("createPost");
 
   return (
     <div className="font-bold flex flex-col flex-1 items-center">
@@ -18,7 +16,6 @@ const Sites: React.FC<SitesProps> = () => {
       <form
         className="transition-all ease-in duration-150 flex flex-col gap-2 w-full sm:w-5/6"
         onSubmit={handleSubmit(({ title, content }) => {
-          postMutate.mutate({ title: title, content: content });
           fetch("/api/posts", {
             method: "POST",
             headers: {
