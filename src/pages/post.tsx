@@ -1,4 +1,3 @@
-import { createPost } from "@/utils/createPost";
 import { trpc } from "@/utils/trpc";
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -18,9 +17,16 @@ const Sites: React.FC<SitesProps> = () => {
       <h1 className="mb-10">Create Post</h1>
       <form
         className="transition-all ease-in duration-150 flex flex-col gap-2 w-full sm:w-5/6"
-        onSubmit={handleSubmit(({ title, content }) =>
-          postMutate.mutate({ title: title, content: content })
-        )}
+        onSubmit={handleSubmit(({ title, content }) => {
+          postMutate.mutate({ title: title, content: content });
+          fetch("/api/posts", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ title, content }),
+          });
+        })}
       >
         <input
           placeholder="Post Title"
@@ -44,10 +50,9 @@ const Sites: React.FC<SitesProps> = () => {
           {...register("content", {
             required: "Post content required",
             minLength: {
-              value: 5,
+              value: 10,
               message: "Too short",
             },
-            validate: (value) => value !== "admin" || "Nice try!",
           })}
         />
         <span className="text-sm font-normal text-red-400">

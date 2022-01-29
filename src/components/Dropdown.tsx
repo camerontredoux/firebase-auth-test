@@ -1,4 +1,4 @@
-import { useAuth } from "@utils/auth";
+import { useAuth } from "@/utils/auth";
 import { useRouter } from "next/router";
 import React, { Dispatch, SetStateAction } from "react";
 

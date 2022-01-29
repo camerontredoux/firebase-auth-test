@@ -1,4 +1,4 @@
-import "@styles/globals.css";
+import "@/styles/globals.css";
 import { AuthProvider } from "@/utils/auth";
 import Layout from "@/components/Layout";
 import { AppType } from "next/dist/shared/lib/utils";

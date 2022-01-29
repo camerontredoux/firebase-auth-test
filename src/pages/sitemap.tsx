@@ -19,6 +19,9 @@ const Sitemap: React.FC<SitemapProps> = () => {
         <li>
           <Link href="/about">About</Link>
         </li>
+        <li>
+          <Link href="/rickandmorty">Rick and Morty</Link>
+        </li>
       </ul>
     </div>
   );

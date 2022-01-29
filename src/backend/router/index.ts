@@ -1,6 +1,7 @@
 import { createPost } from "@/utils/createPost";
 import { createUserTRPC } from "@/utils/createUser";
 import * as trpc from "@trpc/server";
+import prisma from "prisma";
 import { z } from "zod";
 
 export const appRouter = trpc
@@ -35,6 +36,11 @@ export const appRouter = trpc
     }),
     resolve({ input }) {
       return createPost(input);
+    },
+  })
+  .query("getPosts", {
+    async resolve() {
+      return await prisma.post.findMany();
     },
   });
 

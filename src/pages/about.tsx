@@ -1,21 +1,39 @@
 import { trpc } from "@/utils/trpc";
+import { Post } from "@prisma/client";
 import React from "react";
 
-interface AboutProps {}
+interface AboutProps {
+  posts: Post[];
+}
+
+// export const getStaticProps: GetStaticProps = async () => {
+
+//   return {
+//     props: {
+//       posts,
+//     },
+//     revalidate: 10,
+//   };
+// };
 
 const About: React.FC<AboutProps> = () => {
-  const q = trpc.useQuery(["getUser", { id: "1", username: "Cameron" }]);
+  // const { data, error } = useSWR<Post[]>("/api/posts", fetcher);
 
-  if (q.isLoading) return <div>Loading...</div>;
-
-  if (q.data) {
+  const { data, isLoading } = trpc.useQuery(["getPosts"]);
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+  if (data) {
     return (
       <div>
-        {q.data.id} {q.data.name}
+        {data.map((p) => (
+          <div key={p.id}>
+            {p.title} - {p.content}
+          </div>
+        ))}
       </div>
     );
   }
-
   return <div>Error</div>;
 };
 

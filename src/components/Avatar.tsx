@@ -1,4 +1,4 @@
-import { useAuth } from "@utils/auth";
+import { useAuth } from "@/utils/auth";
 import Image from "next/image";
 
 const Avatar = () => {

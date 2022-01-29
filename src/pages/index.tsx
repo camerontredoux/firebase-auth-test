@@ -1,9 +1,8 @@
-import Head from "next/head";
-import { useAuth } from "@/utils/auth";
 import Button from "@/components/Button";
+import { useAuth } from "@/utils/auth";
 import { trpc } from "@/utils/trpc";
+import Head from "next/head";
 import Link from "next/link";
-import { useEffect } from "react";
 
 export const LinkGithub = () => {
   const auth = useAuth();
@@ -32,6 +31,13 @@ export const LinkGithub = () => {
   return null;
 };
 
+export async function fetcher<JSON = any>(
+  input: RequestInfo,
+  init?: RequestInit
+): Promise<JSON> {
+  const res = await fetch(input, init);
+  return res.json();
+}
 export default function Home() {
   const auth = useAuth();
   const createUserMutation = trpc.useMutation("createUser");
