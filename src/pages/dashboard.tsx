@@ -1,15 +1,7 @@
-import { db, useAuth } from "@/utils/auth";
-import { collection, getDocs } from "firebase/firestore";
+import { useAuth } from "@/utils/auth";
 import Head from "next/head";
 import Image from "next/image";
 import { LinkGithub } from ".";
-
-const queryPosts = async () => {
-  const query = await getDocs(collection(db, "posts"));
-  query.forEach((q) => {
-    console.log(q.data());
-  });
-};
 
 const Dashboard = () => {
   const auth = useAuth();

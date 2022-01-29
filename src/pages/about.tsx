@@ -1,9 +1,6 @@
-import { Post } from "@prisma/client";
 import React from "react";
 
-interface AboutProps {
-  posts: Post[];
-}
+interface AboutProps {}
 
 const About: React.FC<AboutProps> = () => {
   return <div>Error</div>;
