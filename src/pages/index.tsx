@@ -1,6 +1,5 @@
 import Button from "@/components/Button";
 import { useAuth } from "@/utils/auth";
-import { trpc } from "@/utils/trpc";
 import Head from "next/head";
 import Link from "next/link";
 
@@ -40,7 +39,6 @@ export async function fetcher<JSON = any>(
 }
 export default function Home() {
   const auth = useAuth();
-  const createUserMutation = trpc.useMutation("createUser");
 
   return (
     <div className="flex-1 flex flex-col gap-5 items-center justify-center py-10">
@@ -58,14 +56,6 @@ export default function Home() {
         <Link href="/sitemap">
           <a>Sitemap</a>
         </Link>
-        <Button
-          className={"signout w-52 justify-center"}
-          variant="github"
-          text="Create user"
-          handleClick={() =>
-            createUserMutation.mutate({ id: "2", username: "Conmeron" })
-          }
-        />
         {auth?.user ? (
           <Button
             className={"signout w-52 justify-center"}

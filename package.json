@@ -8,10 +8,6 @@
   "dependencies": {
     "@fontsource/ibm-plex-sans": "^4.5.1",
     "@prisma/client": "^3.8.1",
-    "@trpc/client": "^10.0.0-alpha.1",
-    "@trpc/next": "^10.0.0-alpha.1",
-    "@trpc/react": "^10.0.0-alpha.1",
-    "@trpc/server": "^10.0.0-alpha.1",
     "animejs": "^3.2.1",
     "firebase": "^9.6.3",
     "next": "latest",

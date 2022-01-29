@@ -35,7 +35,7 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.14.5"
 
-"@babel/runtime@^7.12.5", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.2", "@babel/runtime@^7.7.2", "@babel/runtime@^7.9.0":
+"@babel/runtime@^7.12.5", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.2", "@babel/runtime@^7.7.2":
   version "7.16.7"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.16.7.tgz#03ff99f64106588c9c403c6ecb8c3bafbbdff1fa"
   integrity sha512-9E9FJowqAsytyOY6LG+1KuueckRL+aQW+mKvXRXnuFGyRAyepJPmEo9vgMfXUA6O9u3IeEdv9MAkppFcaQwogQ==
@@ -589,35 +589,6 @@
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha1-p3c2C1s5oaLlEG+OhY8v0tBgxXA=
-
-"@trpc/client@^10.0.0-alpha.1":
-  version "10.0.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/@trpc/client/-/client-10.0.0-alpha.1.tgz#c534e7c0020ba0b2a9fc4fd65e1bb6e53f869779"
-  integrity sha512-pKKlZ0cUI1Vpy13C4KIz6CQp3tK1tBlOZuKyjIbNwL4pof4ovvnnDCOqIt/s3iqzjwydYz/cOly/fJKi35xxWQ==
-  dependencies:
-    "@babel/runtime" "^7.9.0"
-
-"@trpc/next@^10.0.0-alpha.1":
-  version "10.0.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/@trpc/next/-/next-10.0.0-alpha.1.tgz#38787e45a40e5a20756ebb31b4a75c6bf9f5d18a"
-  integrity sha512-MmLNV5c3rDI3oA9WLTKcf7BJPo1daZrM7Sxp/pVoC+N6nlmjLGyThJqRkAsxLez4fmQEnLTUruJuokfTJyUgeg==
-  dependencies:
-    "@babel/runtime" "^7.9.0"
-    react-ssr-prepass "^1.5.0"
-
-"@trpc/react@^10.0.0-alpha.1":
-  version "10.0.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/@trpc/react/-/react-10.0.0-alpha.1.tgz#af74394e615030a6f38fd510b9838736422f21d4"
-  integrity sha512-4Hi3MhALgr8Uy8pSbQ37eDumnufkoEzh8/6fcU0x5IrGTQ1JR3eOZm6Z21bk0/eaM236vdU5NEWFLU6juwhP0A==
-  dependencies:
-    "@babel/runtime" "^7.9.0"
-
-"@trpc/server@^10.0.0-alpha.1":
-  version "10.0.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/@trpc/server/-/server-10.0.0-alpha.1.tgz#5f6a7830420e6a8d8a46f660859a3d380e167002"
-  integrity sha512-bGvXG2hzJ5zks1n0wuHfffE2T4HK7a0EHRLzE0tk56bwmHFlPwYMHcNzvI0sTxdkgN9W36zA60SQQPWNtlOLbQ==
-  dependencies:
-    tslib "^2.1.0"
 
 "@types/animejs@^3.1.4":
   version "3.1.4"
@@ -1589,11 +1560,6 @@ react-refresh@0.8.3:
   version "0.8.3"
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.8.3.tgz#721d4657672d400c5e3c75d063c4a85fb2d5d68f"
   integrity sha512-X8jZHc7nCMjaCqoU+V2I0cOhNW+QMBwSUkeXnTi8IPe6zaRWfn60ZzvFDZqWPfmSJfjub7dDW1SP0jaHWLu/hg==
-
-react-ssr-prepass@^1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/react-ssr-prepass/-/react-ssr-prepass-1.5.0.tgz#bc4ca7fcb52365e6aea11cc254a3d1bdcbd030c5"
-  integrity sha512-yFNHrlVEReVYKsLI5lF05tZoHveA5pGzjFbFJY/3pOqqjGOmMmqx83N4hIjN2n6E1AOa+eQEUxs3CgRnPmT0RQ==
 
 react@^17.0.2:
   version "17.0.2"
