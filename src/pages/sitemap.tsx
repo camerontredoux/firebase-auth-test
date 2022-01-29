@@ -20,7 +20,7 @@ const Sitemap: React.FC<SitemapProps> = () => {
           <Link href="/about">About</Link>
         </li>
         <li>
-          <Link href="/rickandmorty">Rick and Morty</Link>
+          <Link href="/ram">Rick and Morty</Link>
         </li>
       </ul>
     </div>
