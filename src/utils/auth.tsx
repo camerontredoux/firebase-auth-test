@@ -6,13 +6,13 @@ import {
   GithubAuthProvider,
   GoogleAuthProvider,
   linkWithPopup,
+  linkWithRedirect,
   onAuthStateChanged,
   signInWithPopup,
   signInWithRedirect,
   signOut,
-  User,
   unlink,
-  linkWithRedirect,
+  User,
 } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import React, { createContext, useContext, useEffect, useState } from "react";

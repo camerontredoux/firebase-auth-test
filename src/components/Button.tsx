@@ -1,9 +1,10 @@
 interface ButtonProps {
   handleClick: () => any;
   variant: string;
-  text: string;
+  text?: string;
   className?: string;
   icon?: boolean;
+  children?: JSX.Element;
 }
 
 const Button = (props: ButtonProps) => {
@@ -50,6 +51,7 @@ const Button = (props: ButtonProps) => {
     >
       {props.icon ? iconSvg : null}
       <span>{props.text}</span>
+      {props.children}
     </button>
   );
 };
