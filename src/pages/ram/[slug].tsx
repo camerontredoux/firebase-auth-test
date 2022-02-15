@@ -16,7 +16,7 @@ const Slug: React.FC<SlugProps> = ({ results }) => {
       <RAMCard c={results} />
     </>
   ) : (
-    <>
+    <div className="flex flex-1 flex-col gap-4 text-center">
       <RAMCard c={results} />
       <div>
         Appears in{" "}
@@ -24,7 +24,12 @@ const Slug: React.FC<SlugProps> = ({ results }) => {
           ? results.episode.length + " episodes"
           : "1 episode"}
       </div>
-    </>
+      <div>{results.created}</div>
+      <div>{results.location.name}</div>
+      <div>{results.origin.name}</div>
+      <div>{results.species}</div>
+      <div>{results.status}</div>
+    </div>
   );
 };
 

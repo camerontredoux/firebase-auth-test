@@ -41,7 +41,7 @@ export default function Home() {
   const auth = useAuth();
 
   return (
-    <div className="flex-1 flex flex-col gap-5 items-center justify-center py-10">
+    <div className="flex flex-1 flex-col items-center justify-center gap-5 py-10">
       <Head>
         <title>Cameron Tredoux's Portfolio</title>
         <link rel="icon" href="/favicon.ico" />

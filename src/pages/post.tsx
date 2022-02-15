@@ -11,10 +11,10 @@ const Sites: React.FC<SitesProps> = () => {
   } = useForm();
 
   return (
-    <div className="font-bold flex flex-col flex-1 items-center">
+    <div className="flex flex-1 flex-col items-center font-bold">
       <h1 className="mb-10">Create Post</h1>
       <form
-        className="transition-all ease-in duration-150 flex flex-col gap-2 w-full sm:w-5/6"
+        className="flex w-full flex-col gap-2 transition-all duration-150 ease-in sm:w-5/6"
         onSubmit={handleSubmit(({ title, content }) => {
           fetch("/api/posts", {
             method: "POST",
@@ -27,7 +27,7 @@ const Sites: React.FC<SitesProps> = () => {
       >
         <input
           placeholder="Post Title"
-          className="p-2 border-b rounded-md shadow-sm"
+          className="rounded-md border-b p-2 shadow-sm"
           type="text"
           {...register("title", {
             required: "Title required",
@@ -43,7 +43,7 @@ const Sites: React.FC<SitesProps> = () => {
 
         <input
           placeholder="Post Content"
-          className="p-2 border-b rounded-md shadow-sm"
+          className="rounded-md border-b p-2 shadow-sm"
           {...register("content", {
             required: "Post content required",
             minLength: {
@@ -56,7 +56,7 @@ const Sites: React.FC<SitesProps> = () => {
           {errors.content && errors.content.message}
         </span>
 
-        <button type="submit" className="p-2 bg-red-300 rounded-md">
+        <button type="submit" className="rounded-md bg-red-300 p-2">
           Submit
         </button>
       </form>

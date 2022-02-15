@@ -5,8 +5,8 @@ interface SitemapProps {}
 
 const Sitemap: React.FC<SitemapProps> = () => {
   return (
-    <div className="flex flex-col flex-1 justify-center">
-      <ul className="flex flex-col gap-5 items-center">
+    <div className="flex flex-1 flex-col justify-center">
+      <ul className="flex flex-col items-center gap-5">
         <li>
           <Link href="/">Home</Link>
         </li>

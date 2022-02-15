@@ -11,7 +11,7 @@ const Button = (props: ButtonProps) => {
   const iconSvg =
     props.variant === "google" ? (
       <svg
-        className="mr-2 -ml-1 w-4 h-4"
+        className="mr-2 -ml-1 h-4 w-4"
         aria-hidden="true"
         focusable="false"
         data-prefix="fab"
@@ -27,7 +27,7 @@ const Button = (props: ButtonProps) => {
       </svg>
     ) : (
       <svg
-        className="mr-2 -ml-1 w-4 h-4"
+        className="mr-2 -ml-1 h-4 w-4"
         aria-hidden="true"
         focusable="false"
         data-prefix="fab"

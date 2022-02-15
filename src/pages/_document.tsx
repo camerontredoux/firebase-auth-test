@@ -21,7 +21,7 @@ class MyDocument extends Document {
             rel="stylesheet"
           ></link>
         </Head>
-        <body className="font-body bg-[#fcfcfc] px-10 max-w-screen-xl mx-auto ">
+        <body className="font-body mx-auto max-w-screen-xl bg-[#fcfcfc] px-10 ">
           <Main />
           <NextScript />
         </body>
