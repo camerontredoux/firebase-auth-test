@@ -5,6 +5,12 @@ import Cookies from "js-cookie";
 import { GetServerSideProps } from "next/types";
 import { parseCookies } from "nookies";
 import React, { useEffect, useState } from "react";
+import {
+  HiChevronDoubleLeft,
+  HiChevronDoubleRight,
+  HiChevronLeft,
+  HiChevronRight,
+} from "react-icons/hi";
 import useSWR, { SWRConfig } from "swr";
 
 const fetcher = async (input: RequestInfo, init: RequestInit) =>
@@ -31,13 +37,17 @@ const Rickandmorty: React.FC<RickandmortyProps> = ({ pageCookie }) => {
 
   const handleClick = (direction: string) => {
     if (direction === "prev") {
-      if (data?.info.prev) {
+      if (data.info.prev) {
         setIndex((i) => i - 1);
       }
     } else if (direction === "next") {
-      if (data?.info.next) {
+      if (data.info.next) {
         setIndex((i) => i + 1);
       }
+    } else if (direction === "first") {
+      setIndex(1);
+    } else if (direction === "last") {
+      setIndex(data.info.pages);
     }
   };
 
@@ -49,20 +59,18 @@ const Rickandmorty: React.FC<RickandmortyProps> = ({ pageCookie }) => {
           className={`${
             index === 1 ? "cursor-not-allowed opacity-30" : "opacity-100"
           }`}
+          handleClick={() => handleClick("first")}
+        >
+          <HiChevronDoubleLeft />
+        </Button>
+        <Button
+          variant="github"
+          className={`${
+            index === 1 ? "cursor-not-allowed opacity-30" : "opacity-100"
+          }`}
           handleClick={() => handleClick("prev")}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fillRule="evenodd"
-              d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-              clipRule="evenodd"
-            />
-          </svg>
+          <HiChevronLeft />
         </Button>
         <div>
           {index} of {data.info.pages}
@@ -76,18 +84,18 @@ const Rickandmorty: React.FC<RickandmortyProps> = ({ pageCookie }) => {
           }`}
           handleClick={() => handleClick("next")}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fillRule="evenodd"
-              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-              clipRule="evenodd"
-            />
-          </svg>
+          <HiChevronRight />
+        </Button>
+        <Button
+          variant="github"
+          className={`${
+            index === data.info.pages
+              ? "cursor-not-allowed opacity-30"
+              : "opacity-100"
+          }`}
+          handleClick={() => handleClick("last")}
+        >
+          <HiChevronDoubleRight />
         </Button>
       </div>
       <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
@@ -101,20 +109,18 @@ const Rickandmorty: React.FC<RickandmortyProps> = ({ pageCookie }) => {
           className={`${
             index === 1 ? "cursor-not-allowed opacity-30" : "opacity-100"
           }`}
+          handleClick={() => handleClick("first")}
+        >
+          <HiChevronDoubleLeft />
+        </Button>
+        <Button
+          variant="github"
+          className={`${
+            index === 1 ? "cursor-not-allowed opacity-30" : "opacity-100"
+          }`}
           handleClick={() => handleClick("prev")}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fillRule="evenodd"
-              d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-              clipRule="evenodd"
-            />
-          </svg>
+          <HiChevronLeft />
         </Button>
         <div>
           {index} of {data.info.pages}
@@ -128,18 +134,18 @@ const Rickandmorty: React.FC<RickandmortyProps> = ({ pageCookie }) => {
           }`}
           handleClick={() => handleClick("next")}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fillRule="evenodd"
-              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-              clipRule="evenodd"
-            />
-          </svg>
+          <HiChevronRight />
+        </Button>
+        <Button
+          variant="github"
+          className={`${
+            index === data.info.pages
+              ? "cursor-not-allowed opacity-30"
+              : "opacity-100"
+          }`}
+          handleClick={() => handleClick("last")}
+        >
+          <HiChevronDoubleRight />
         </Button>
       </div>
     </>
