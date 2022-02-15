@@ -15,7 +15,7 @@ interface RickandmortyProps {
 }
 
 const Rickandmorty: React.FC<RickandmortyProps> = ({ pageCookie }) => {
-  const [index, setIndex] = useState<number>(JSON.parse(pageCookie));
+  const [index, setIndex] = useState<number>(() => JSON.parse(pageCookie));
 
   useEffect(() => {
     Cookies.set("index", "" + index);
@@ -152,7 +152,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const pageCookie = parseCookies(ctx);
   return {
     props: {
-      initialPageCookie: pageCookie.index,
+      initialPageCookie: pageCookie.index ? pageCookie.index : "1",
       fallback: {
         results,
       },
