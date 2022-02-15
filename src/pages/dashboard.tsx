@@ -1,12 +1,11 @@
 import { useAuth } from "@/utils/auth";
 import Head from "next/head";
-import Image from "next/image";
 import { LinkGithub } from ".";
 
 const Dashboard = () => {
   const auth = useAuth();
   return (
-    <div className="flex flex-col flex-1 gap-5 justify-start items-center py-10">
+    <div className="flex flex-1 flex-col items-center justify-start gap-5 py-10">
       <Head>
         <title>Dashboard</title>
         <link rel="icon" href="/favicon.ico" />
@@ -20,17 +19,15 @@ const Dashboard = () => {
         <div className="">You must be signed in to view this page.</div>
       )}
       <div className="flex items-center gap-2">
-        <code className="font-body p-2 text-sm shadow-sm bg-white rounded">
+        <code className="font-body rounded bg-white p-2 text-sm shadow-sm">
           {auth?.user?.email ? auth.user.email : "No user logged in"}
         </code>
-        <div className="shadow-md w-10 h-10 rounded-full border-2 border-white">
+        <div className="h-10 w-10 rounded-full border-2 border-white shadow-md">
           {auth?.user?.photoURL ? (
-            <Image
-              className="rounded-full"
-              width="96"
-              height="96"
+            <img
               src={auth.user.photoURL}
               alt={auth?.user?.displayName ? auth.user.displayName : "Profile"}
+              className="h-24 w-24 rounded-full"
             />
           ) : null}
         </div>
