@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "@fontsource/ibm-plex-sans": "^4.5.1",
+    "@heroicons/react": "^1.0.5",
     "@prisma/client": "^3.8.1",
     "animejs": "^3.2.1",
     "firebase": "^9.6.3",
